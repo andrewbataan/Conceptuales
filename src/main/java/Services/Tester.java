@@ -19,7 +19,10 @@ public class Tester {
     public static void main(String[] args) {
         
         Usuario usr = new Usuario();
-        usr.setNombre("Andrew");
+        usr.setNombre("Sin nombre");
+        usr.setEmail("alanna@gmail.com");
+        usr.setContrasena("variable");
+        usr.setId(100);
         try{
             UsuarioDao dao = new UsuarioDao();
             dao.insertar(usr);

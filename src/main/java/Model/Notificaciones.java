@@ -14,15 +14,17 @@ public class Notificaciones {
     String asunto;
     String remitente;
     String titulo;
+    String destinatario;
 
     public Notificaciones() {
     }
 
-    public Notificaciones(int idNotificacion, String asunto, String remitente, String titulo) {
+    public Notificaciones(int idNotificacion, String asunto, String remitente, String titulo, String destinatario) {
         this.idNotificacion = idNotificacion;
         this.asunto = asunto;
         this.remitente = remitente;
         this.titulo = titulo;
+        this.destinatario = destinatario;
     }
 
     public int getIdNotificacion() {
@@ -56,5 +58,14 @@ public class Notificaciones {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    
+
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+
 }
