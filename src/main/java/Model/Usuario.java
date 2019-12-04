@@ -68,4 +68,5 @@ public class Usuario {
     }
     
     //Andrew Nuñez Cespedes
+    //Prueba de sonar para la clase
 }
