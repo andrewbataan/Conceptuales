@@ -67,4 +67,5 @@ public class Usuario {
         this.contrasena = contrasena;
     }
     
+    //Andrew Nuñez Cespedes
 }
