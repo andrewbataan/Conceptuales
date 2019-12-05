@@ -67,5 +67,6 @@ public class Notificaciones {
         this.destinatario = destinatario;
     }
 
+    //Hola bernal
 
 }
