@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import Model.Notificaciones;
+import Model.Notificacion;
 import Model.Usuario;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -28,7 +28,7 @@ import static org.primefaces.behavior.confirm.ConfirmBehavior.PropertyKeys.messa
  */
 public class ManualMail {
     
-  static  Notificaciones noti = new Notificaciones();
+  static  Notificacion noti = new Notificacion();
   static Usuario usr = new Usuario();
 
     public static void main(String recipient) {
@@ -45,7 +45,7 @@ public class ManualMail {
             
             Message mailMessage = new MimeMessage(mailSession);
             
-            mailMessage.setFrom(new NewsAddress(noti.getRemitente()));
+            mailMessage.setFrom(new NewsAddress(noti.getUser()));
             mailMessage.setRecipient(Message.RecipientType.TO, new NewsAddress(noti.getDestinatario()));
             mailMessage.setContent(message,"text/html" );
             mailMessage.setSubject(noti.getAsunto());

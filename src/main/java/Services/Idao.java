@@ -21,5 +21,7 @@ public interface Idao {
 
         public void update(T data);
 
+        public List<T> getAll();
+
     }
 }

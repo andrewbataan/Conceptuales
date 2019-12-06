@@ -9,22 +9,27 @@ package Model;
  *
  * @author User
  */
-public class Notificaciones {
-    int idNotificacion;
-    String asunto;
-    String remitente;
-    String titulo;
-    String destinatario;
+public class Notificacion {
 
-    public Notificaciones() {
+    private int idNotificacion;
+    private int idUsuario;
+
+    private String asunto;
+    private String cuerpo;
+
+    private String destinatario;
+private String user;
+
+    public Notificacion() {
     }
 
-    public Notificaciones(int idNotificacion, String asunto, String remitente, String titulo, String destinatario) {
-        this.idNotificacion = idNotificacion;
+    public Notificacion( String asunto, String cuerpo, String destinatario, int idUsuario) {
+      
         this.asunto = asunto;
-        this.remitente = remitente;
-        this.titulo = titulo;
+        this.cuerpo = cuerpo;
+
         this.destinatario = destinatario;
+        this.idUsuario = idUsuario;
     }
 
     public int getIdNotificacion() {
@@ -43,20 +48,12 @@ public class Notificaciones {
         this.asunto = asunto;
     }
 
-    public String getRemitente() {
-        return remitente;
+    public String getCuerpo() {
+        return cuerpo;
     }
 
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setCuerpo(String cuerpo) {
+        this.cuerpo = cuerpo;
     }
 
     public String getDestinatario() {
@@ -67,7 +64,20 @@ public class Notificaciones {
         this.destinatario = destinatario;
     }
 
-    //Hola bernal
-//kmdoasmdom
-    //xkjdfksdfnj
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
 }
