@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Page</title>
+
+    </h:head>
+    <body >
+
+
+
+
+        <p:panel class="vertical-center" header="Register" style="width:300px; " >
+
+            <p:growl id="mensajes" showDetail="true" life="5000" />
+            <h:panelGrid columns="2" id="pgDatos" cellpadding="8" />
+            <h:form id="formRegistro" >
+
+
+
+                <p:inputText id="EmailId" value="#{VerificationController.email}"  placeholder="email" style="width:98%" required="true"/>
+
+                <br></br><br></br>
+
+                <p:inputText id="NameId" value="#{VerificationController.nombre}"  placeholder="Nombre" style="width:98%" required="=true"/>
+
+                <br></br><br></br>
+
+                <p:inputText id="LastnameId" value="#{VerificationController.apellido1}"  placeholder="Nombre" style="width:98%" required="=true"/>
+                
+                <br></br><br></br>
+                
+                <p:password id="pass1" value="#{VerificationController.contrasena}" 
+                            validatorMessage="the passwords doesnt match " weakLabel="Weak" strongLabel="Strong" goodLabel="Good"
+                            match="pass2"  feedback="true"  promptLabel="insert a password" placeholder="Contraseña" style="width:98%" />  
+                <p:message for="pass1" />
+                <br></br>
+
+
+                <p:password id="pass2"  placeholder="Confirmar contraseña" style="width:98%" required="true"/>
+                <br></br> <br></br>
+
+
+                <div class="ui-g" >
+                    <div class="ui-g-6">
+                        <p:commandButton id="signupId" value="Registrarse"  action="#{VerificationController.signUp()}" />
+                    </div>
+                    
+                </div>
+
+            </h:form>
+
+        </p:panel>
+    </body>
+</html>

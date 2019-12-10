@@ -15,6 +15,12 @@
     </properties>
     
     <dependencies>
+        
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.7</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -29,7 +35,8 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>7.0</version>
+            <version>5.0</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -40,6 +47,36 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
             <version>8.0</version>
+        </dependency>
+        
+        
+       
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>log4j-jboss-logmanager</artifactId>
+            <version>1.1.6.Final</version>
+        </dependency> 
+          <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.10</version>
+        </dependency>  
+        <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
+        </dependency> 
+        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.0</version>
         </dependency>
     </dependencies>
 
@@ -65,6 +102,9 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+          
+            
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -92,5 +132,12 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <url>http://repository.primefaces.org/</url>
+            <id>PrimeFaces-maven-lib</id>
+            <layout>default</layout>
+            <name>Repository for library PrimeFaces-maven-lib</name>
+        </repository>
+    </repositories>
 </project>

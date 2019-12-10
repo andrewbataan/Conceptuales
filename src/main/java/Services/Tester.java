@@ -19,13 +19,14 @@ public class Tester {
     public static void main(String[] args) {
         
         Usuario usr = new Usuario();
-        usr.setNombre("Sin nombre");
-        usr.setEmail("alanna@gmail.com");
-        usr.setContrasena("variable");
-        usr.setId(100);
+        usr.setId(110);
+        
+        usr.setNombre("prueba@gmail");
+        usr.setContrasena("1234");
+        usr.setApellido("castro");
         try{
             UsuarioDao dao = new UsuarioDao();
-            dao.insertar(usr);
+            dao.update(usr);
             
         }catch(Exception e){
             System.out.println(e.getMessage());

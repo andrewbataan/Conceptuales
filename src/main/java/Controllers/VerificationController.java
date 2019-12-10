@@ -4,23 +4,29 @@ package Controllers;
 import Model.Usuario;
 import Services.UsuarioDao;
 import java.io.Serializable;
+import java.sql.SQLException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name = "VerificationController")
 @SessionScoped
 
 
 public class VerificationController implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
      private String nombre;
-     Usuario usuario = new Usuario();
+    private Usuario usuario;
     private String apellido1;
     private String email;
  private   String contrasena;
  private int id;
+ private String password;
+ private String user;
 private boolean logueado = false;
     public VerificationController() {
     }
@@ -28,13 +34,38 @@ private boolean logueado = false;
     
     public String signUp(){
          UsuarioDao dao = new UsuarioDao();
-         Usuario usr = new Usuario(this.id ,this.nombre,this.apellido1,this.email,this.contrasena);
+         Usuario usr = new Usuario(this.id,this.nombre,this.apellido1,this.email,this.contrasena);
          dao.insert(usr);
-         return "succesfull sign up";
+          if (usr!= null) {
+
+            System.out.println(usr.getNombre());
+           
+            this.redirect("landing");
+
+        } else {
+            FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalid User"));
+        }
+        return "succesfull signUp";
+
     }
- private boolean login(UsuarioDao usuarios) {
+    public String login ()throws SQLException, ClassNotFoundException {
+     UsuarioDao usr = new UsuarioDao();
+     if(Verification (usr)) {
+      this.redirect("landing");
+        } else {
+            FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalid User"));
+        }
+        return null;
+    }
+    
+    
+    
+    
+    
+    
+ private boolean Verification(UsuarioDao usr) throws SQLException, ClassNotFoundException {
         FacesMessage msg;
-        Usuario loginU = usuarios.verificarUsuario(this.email, this.contrasena);
+        Usuario loginU = usr.sign(this.user, this.password);
         if (loginU != null) {
             usuario = loginU;
             id = usuario.getId();
@@ -42,17 +73,27 @@ private boolean logueado = false;
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", this.nombre);
             return true;
             
-        } else {
-            logueado = false;
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces."));
- 
- 
- 
- 
- 
-}
+        } 
          return false;
+         
  }
+ 
+ 
+ 
+  public void redirect(String page) {
+        try {
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/" + page + ".xhtml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public String getNombre() {
         return nombre;
     }
@@ -107,6 +148,22 @@ private boolean logueado = false;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
     
 }

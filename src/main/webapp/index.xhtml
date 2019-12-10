@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Bienvenido al sistema</title>
+    </h:head>
+    <h:body style="text-align:center" >
+
+        <p:growl id="mensajes" showDetail="true" life="5000" />
+        <h:form id="loginForm">
+            <p:panel header="Login" style="width:400px">
+                <h:panelGrid columns="2" cellpadding="6">
+                    <h:outputLabel for="username" value="Email:" />
+                    <p:inputText value="#{VerificationController.user}" id="username" required="true" label="email" requiredMessage="El Email es requerido..." />
+                    <h:outputLabel for="password" value="Clave:" />
+                    <p:password value="#{VerificationController.password}" id="password" required="true"  label="password" />
+                      <f:facet name="footer">
+                   <div class="ui-g-6" style=" padding-left: 10%">
+                                    <p:commandButton id="LoginId" value="Login" class="btn btn-danger btn-fill " action="#{VerificationController.login}" />
+                                </div>
+                    
+                   
+                        <br></br>
+                        ¿Aún no tienes una cuenta?
+                        <p:link outcome="register.xhtml" value="REGISTRARSE">
+                            <f:param name="register.xhtml" value="REGISTRARSE" />
+                        </p:link>
+                        
+                        <br></br>
+                    </f:facet>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+    <script type="text/javascript">
+        //<![CDATA[
+        function manejarLogin(xhr, status, args) {
+           // alert('args.estaLogeado ' + args.estaLogeado);
+           // alert('args.nombre ' + args.nombre);
+
+            if (args.estaLogeado) {
+                //alert('Entro a la funcion en Javascript de prueba para hacer una pausa antes de ingresar');
+                setTimeout(function () {
+                    window.location = args.view;
+                }, 1500);
+            }
+        }
+        //]]>
+    </script>
+</html>
