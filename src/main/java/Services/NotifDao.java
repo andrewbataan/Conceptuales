@@ -65,7 +65,7 @@ public class NotifDao implements IDao<Notificacion> {
         //This method is for get the users.noti info //
         try {
             
-            ps = conn.prepareStatement("SELECT usuario.nombre AS usuario, notificacion.asunto, notificacion.cuerpo, notificacion.destinatario "
+            ps = conn.prepareStatement("SELECT usuario.email AS usuario, notificacion.asunto, notificacion.cuerpo, notificacion.destinatario "
                     + "FROM notificacion INNER JOIN  usuario ON notificacion.idUsuario = usuario.idUsuario "
                     + "WHERE notificacion.idUsuario = ?;");
             ps.setInt(1, idUsuario);

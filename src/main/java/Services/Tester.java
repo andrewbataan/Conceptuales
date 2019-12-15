@@ -5,6 +5,7 @@
  */
 package Services;
 
+import Model.Notificacion;
 import Model.Usuario;
 
 /**
@@ -18,15 +19,17 @@ public class Tester {
      */
     public static void main(String[] args) {
         
-        Usuario usr = new Usuario();
-        usr.setId(110);
+       Notificacion noti = new Notificacion();
+     
         
-        usr.setNombre("prueba@gmail");
-        usr.setContrasena("1234");
-        usr.setApellido("castro");
+        noti.setAsunto("prueba");
+        noti.setCuerpo("bodyy");
+        noti.setIdUsuario(1);
+        noti.setDestinatario("tset@gmail");
+        
         try{
-            UsuarioDao dao = new UsuarioDao();
-            dao.update(usr);
+            NotifDao dao = new NotifDao();
+            dao.insert(noti);
             
         }catch(Exception e){
             System.out.println(e.getMessage());
