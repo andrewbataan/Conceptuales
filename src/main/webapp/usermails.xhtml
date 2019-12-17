@@ -1,16 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    </h:head>
+    <title style="color: blue">Email Service</title>
+    <h:body>
+       
+        <h:form id="form" style="padding: 32px">
+            <p:dataTable id="EDT" var="mails" value="#{NotificationController.notifs}">
+            <f:facet name="usermails">
+                    <title style="color: blue">Email Service</title>
+
+            </f:facet>
+            <p:column headerText="user">
+                <h:outputText value="#{mails.user}" />
+            </p:column>
+            <p:column headerText="asunto">
+                <h:outputText value="#{mails.asunto}" />
+            </p:column>
+            <p:column headerText="from">
+                <h:outputText value="#{mails.destinatario}" />
+            </p:column>
+            <p:column headerText="email body">
+                <h:outputText value="#{mails.cuerpo}" />
+            </p:column>
+          
+        </p:dataTable>
+            <h:commandButton value="send new mail" action="#{NotificationController.newEmailPage()}" />
+            </h:form>
+       
+    </h:body>
 </html>

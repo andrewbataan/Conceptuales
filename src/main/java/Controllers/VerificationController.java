@@ -1,4 +1,3 @@
-
 package Controllers;
 
 import Model.Usuario;
@@ -40,7 +39,7 @@ private boolean logueado = false;
 
             System.out.println(usr.getNombre());
            
-            this.redirect("landing");
+            this.redirect("/faces/usermails?faces-redirect=true&idUsuario= " + this.usuario.getId());
 
         } else {
             FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalid User"));
@@ -51,7 +50,7 @@ private boolean logueado = false;
     public String login ()throws SQLException, ClassNotFoundException {
      UsuarioDao usr = new UsuarioDao();
      if(Verification (usr)) {
-      this.redirect("landing");
+      return "/faces/usermails?faces-redirect=true&idUsuario= " + this.usuario.getId();
         } else {
             FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalid User"));
         }

@@ -8,7 +8,19 @@
         <title>Register Page</title>
 
     </h:head>
-    <body >
+  
+ <body style=" display: flex; align-items: center; justify-content: center;">
+        <style>
+
+            .vertical-center {
+                margin: 0;
+                position: absolute;
+                top: 35%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        </style>
+
 
 
 
@@ -29,7 +41,7 @@
 
                 <br></br><br></br>
 
-                <p:inputText id="LastnameId" value="#{VerificationController.apellido1}"  placeholder="Nombre" style="width:98%" required="=true"/>
+                <p:inputText id="LastnameId" value="#{VerificationController.apellido1}"  placeholder="Apellido" style="width:98%" required="=true"/>
                 
                 <br></br><br></br>
                 
@@ -46,11 +58,10 @@
 
                 <div class="ui-g" >
                     <div class="ui-g-6">
-                        <p:commandButton id="signupId" value="Registrarse"  action="#{VerificationController.signUp()}" />
+                        <p:commandButton id="signupId" value="Signup"  action="#{VerificationController.signUp()}" />
                     </div>
-                    
-                </div>
-
+                                    </div>
+ 
             </h:form>
 
         </p:panel>

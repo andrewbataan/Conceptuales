@@ -19,17 +19,15 @@ public class Tester {
      */
     public static void main(String[] args) {
         
-       Notificacion noti = new Notificacion();
+      Usuario usr = new Usuario();
      
         
-        noti.setAsunto("prueba");
-        noti.setCuerpo("bodyy");
-        noti.setIdUsuario(1);
-        noti.setDestinatario("tset@gmail");
+        usr.setId(100);
+        usr.setContrasena("pueblocorales1");
         
         try{
-            NotifDao dao = new NotifDao();
-            dao.insert(noti);
+          UsuarioDao dao = new UsuarioDao();
+            dao.update(usr);
             
         }catch(Exception e){
             System.out.println(e.getMessage());

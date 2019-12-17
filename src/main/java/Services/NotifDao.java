@@ -80,7 +80,7 @@ public class NotifDao implements IDao<Notificacion> {
             }
          } catch (SQLException e) {
             e.printStackTrace();
-            throw new SQLException("Error, no se pudo completar la conexion a la Base de Datos");
+            throw new SQLException("Error, the query is invalid");
         } finally {
             conectorJDBC.cerrarConexion(conn, ps, rs);
         
@@ -113,7 +113,7 @@ Connection conn= conectorJDBC.conectar();
         }catch (SQLException e) {
             e.printStackTrace();
             try {
-                throw new SQLException("Error, no se pudo completar la conexion a la Base de Datos");
+                throw new SQLException("Error, the query is invalid");
             } catch (SQLException ex) {
                 Logger.getLogger(NotifDao.class.getName()).log(Level.SEVERE, null, ex);
             }
