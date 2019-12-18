@@ -8,6 +8,7 @@
     <title style="color: blue">Email Service</title>
     <h:body>
        
+       
         <h:form id="form" style="padding: 32px">
             <p:dataTable id="EDT" var="mails" value="#{NotificationController.notifs}">
             <f:facet name="usermails">
@@ -28,8 +29,15 @@
             </p:column>
           
         </p:dataTable>
-            <h:commandButton value="send new mail" action="#{NotificationController.newEmailPage()}" />
-            </h:form>
+            
+            
+           
+            <p:commandButton value="Download User Emails" ajax="false">
+
+                    <p:dataExporter type="pdf" target ="EDT" fileName="email list"/>
+                </p:commandButton>
+            <h:commandButton value="send new email" action="#{NotificationController.newEmailPage()}" />
+        </h:form>
        
     </h:body>
 </html>

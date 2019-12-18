@@ -2,32 +2,71 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <h:head>
+         <script>
+            $(document).ready(function () {
+                $(".btn1").click(function () {
+                    if ($(".manualM").is(":visible")) {
+                        $(".manualM").hide();
+                        $(".answerByPeson").show();
+
+                    } else {
+                        $(".manualM").show();
+                        $(".answerByPeson").hide();
+                    }
+                });
+
+
+
+            });
+        </script>
+         
+
     </h:head>
     <title style="color: blue">Email Service</title>
-    <h:body>
+    <h:body >
        
         <h:form id="form" style="padding: 40px">
-             <p:panel header="new email" style="width:600px">
-                  <h:panelGrid columns="1" >
+              <p:inputSwitch class="btn1" /> 
+             <p:panel class="manualM" header="new email" style="width:600px">
+                    <h:panelGrid columns="1" >
                       <p:inputText id="EmailId" value="#{NotificationController.destinatario}"  placeholder="To email" style="width:98%" required="true"/>
                       <p:inputText id="AffairId" value="#{NotificationController.asunto}"  placeholder="affair" style="width:98%" required="true"/>
-                      <p:editor widgetVar="editor1" value="#{NotificationController.cuerpo}" height="300" style="margin-bottom:10px"/>
+                      <p:textEditor widgetVar="editor1" value="#{NotificationController.cuerpo}" height="300" style="margin-bottom:10px" placeholder="please write mail content"/>
      
    
-    <p:commandButton value="Clear" type="button" onclick="PF('editor1').clear();" icon="pi pi-times" />
+    <p:commandButton value="delete mail content" type="button" onclick="PF('editor1').clear();" icon="pi pi-times" />
      
     <p:commandButton value="Send" class="btn btn-danger btn-fill" action="#{NotificationController.sendmail()}"/>
-     <p:commandButton value="Scheduled Email" class="btn btn-danger btn-fill" onclick="PF('scheduledEmail').show()"/>
+     
+    
+    
+    
+   
               
-               </h:panelGrid>
+                </h:panelGrid  >
                   </p:panel>
-            </h:form>
+        </h:form>
+              
+        <h:form>
+    
+    <p:panel class="answerByPeson" header="AUTOMATIC EMAIL" style="width:600px" >
+   
+                      <p:inputText id="EmailId" value="#{NotificationController.destinatario}"  placeholder="To email" style="width:98%" required="true"/>
+                      <p:inputText id="AffairId" value="#{NotificationController.asunto}"  placeholder="affair" style="width:98%" required="true"/>
+                     
+                      <p:textEditor widgetVar="mailBody" value="#{NotificationController.cuerpo}" height="300" style="margin-bottom:10px" placeholder="please write mail content"/>
+     
+   
+    <p:commandButton value="delete mail content" type="button" onclick="PF('mailBody').clear();" icon="pi pi-times" />
+    <p:commandButton value="Scheduled Email" class="btn btn-danger btn-fill" onclick="PF('scheduledEmail').show()"/>
+    
+           
         
-        <p:dialog widgetVar="scheduledEmail" modal="true" header="New Email" width="550" showEffect="fade" hideEffect="fade" style="outline: 5px solid palevioletred;">
+        <p:dialog widgetVar="scheduledEmail" modal="true" header="select email Schedule" width="550" showEffect="fade" hideEffect="fade" style="outline: 5px solid palevioletred;">
             <h:form>
-                <p:outputLabel value="Time " style="padding-right: 10px;"/>
+                <p:outputLabel value="please select a time " style="padding-right: 10px;"/>
                 <p:selectOneMenu value="#{NotificationController.shedule}" style="margin-bottom:10px;width: 90%; border-color: #d43f3a; ">
                     <f:selectItem itemLabel="" itemValue= "#{null}"/>
                     <f:selectItems value="#{NotificationController.times}" var="listaTiempo" itemValue="#{listaTiempo}" />
@@ -41,7 +80,8 @@
             </h:form>
 
         </p:dialog>
-           
-            
+
+</p:panel>
+       </h:form>      
     </h:body>
 </html>

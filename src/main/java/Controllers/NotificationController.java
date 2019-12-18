@@ -78,7 +78,7 @@ public class NotificationController implements Serializable {
     }
 
     public String redirectViewMailPage() {
-        return "correos?faces-redirect=true&idUsuario=" + veriController.getUsuario().getId();
+        return "usermails?faces-redirect=true&idUsuario=" + veriController.getUsuario().getId();
     }
 
     public static void sendmail() {
