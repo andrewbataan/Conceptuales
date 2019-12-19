@@ -33,7 +33,7 @@ import org.quartz.impl.StdSchedulerFactory;
 @SessionScoped
 
 public class NotificationController implements Serializable {
-
+//asjkdfdsf
     private static final long serialVersionUID = 1L;
     private String shedule;
     private int idUsuario;
